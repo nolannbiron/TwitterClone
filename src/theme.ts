@@ -7,6 +7,7 @@ import { mode } from '@chakra-ui/theme-tools';
 
 const colors = {
     ...baseTheme.colors,
+	borderColor: "rgb(47, 51, 54)"
 }
 
 const components = {
@@ -51,7 +52,7 @@ const components = {
 				}
 			}
 		}
-	},
+	}
 }
 
 const config = {
@@ -66,7 +67,10 @@ const customTheme = extendTheme({
         global: () => ({
           body: {
             bg: "rgb(0,0,0)",
-          }
+		  },
+		  "*": {
+				borderColor: "rgb(47, 51, 54)"
+			}
         })
       },
 })

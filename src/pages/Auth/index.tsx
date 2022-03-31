@@ -1,15 +1,13 @@
-import { Heading } from "@chakra-ui/react";
 import React from "react";
+import { Flex } from "@chakra-ui/react";
+import { LoginCard as LoginWrapper } from "./styled";
 
-const AuthPage = () => {
-
+const LoginPage = () => {
     return(
-        <>
-            <Heading>
-                Auth Page
-            </Heading>
-        </>
+        <Flex h="100vh" w="100%" justifyContent='center' alignItems="center" bg="#242d35">
+            <LoginWrapper />
+        </Flex>
     )
-} 
+}
 
-export default AuthPage;
+export default LoginPage;

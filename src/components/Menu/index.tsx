@@ -8,6 +8,8 @@ import {BsBookmark} from "react-icons/bs";
 import {IoSettingsOutline} from "react-icons/io5";
 import SearchBar from "../SearchBar";
 import { Card } from "../Card";
+import { useDispatch } from "react-redux";
+import { handleLogout, unsetUser } from "../../state/auth";
 
 interface StyledMenuItemProps {
     to: string, 
@@ -56,9 +58,10 @@ export const Menu = () => {
     const widthWrapper = ['100%', '', 'fit-content'];
     
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     return (
-        <Flex flexDir={"column"} height="100vh" position="sticky" top="0" flex={['0 1 auto', '0 1 auto', '0 1 29%']} alignItems="flex-end" px={[0, "", 10]} pt={10} borderRight="solid 1px grey">
+        <Flex flexDir={"column"} height="100vh" position="sticky" top="0" flex={['0 1 auto', '0 1 auto', '0 1 29%']} alignItems="flex-end" px={[0, "", 10]} pt={10} borderRight="solid 1px rgb(47, 51, 54)">
             <Flex height="100%" direction={"column"} justifyContent='space-between' alignItems={'self-start'}>
                 <Flex flexDirection="column" gap={3} width={widthWrapper}>
                     <StyledMenuItem to="/" icon={<BiHomeCircle />} text="Feed" />
@@ -67,7 +70,7 @@ export const Menu = () => {
                     <StyledMenuItem to="/reglages" icon={<IoSettingsOutline />} text="Réglages" />
                     <Button onClick={() => navigate('/', {state: {newPost: true}})} display={['none', '', 'block']} mt={3} variant="primary">Publier un message</Button>
                 </Flex>
-                <Flex pb={5} gap={3} width={widthWrapper} justifyContent={['center', '', 'start']} alignItems={"center"}>
+                <Flex onClick={() => dispatch(handleLogout())} sx={{':hover': {cursor: 'pointer'}}} pb={5} gap={3} width={widthWrapper} justifyContent={['center', '', 'start']} alignItems={"center"}>
                     <Avatar src="https://pbs.twimg.com/profile_images/1207752002379407362/Yvp0iHI4_x96.jpg" width="40px" height="40px" />
                     <Box display={['none', '', 'block']}>
                         <Text fontWeight={"bold"} fontSize="md">Nolann</Text>
@@ -83,7 +86,7 @@ export const Menu = () => {
 export const MenuRight = () => {
 
     return (
-        <Flex position="sticky" top="0" borderLeft={"solid 1px grey"} display={["none", "none", "none", "flex"]} flexDir={"column"} height="100vh" flex={['1 1 auto', '1 1 auto', '1 1 auto', '1 1 22%', '0 1 22%']} alignItems="flex-start" px={[0, 0, 5]} pt={2}>
+        <Flex position="sticky" top="0" borderLeft={"solid 1px rgb(47, 51, 54)"} display={["none", "none", "none", "flex"]} flexDir={"column"} height="100vh" flex={['1 1 auto', '1 1 auto', '1 1 auto', '1 1 22%', '0 1 22%']} alignItems="flex-start" px={[0, 0, 5]} pt={2}>
             <Flex height="100%" width="100%" gap={5} direction={"column"} alignItems={'self-start'}>
                 <SearchBar />
                 <Card>
